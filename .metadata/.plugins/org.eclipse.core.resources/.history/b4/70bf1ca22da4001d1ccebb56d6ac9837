@@ -1,0 +1,6 @@
+package clp.chat.com;
+
+public class Member {
+	String name;
+
+}
