@@ -1,7 +1,11 @@
 package com.clp.chat;
 
-public interface Group {
-	public void getUsers();
-	public void deleteUser();
-	public void addUser();
+
+import java.util.ArrayList;
+
+public class Group {
+	ArrayList<User> listUsers= new ArrayList<>();
+	
+	
+
 }
