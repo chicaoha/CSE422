@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
+import com.clp.entity.User;
+import java.util.function.Predicate;
 public class Repository<TEntity> implements IRepository<TEntity> {
     private List<TEntity> entities;
 
@@ -34,4 +36,7 @@ public class Repository<TEntity> implements IRepository<TEntity> {
     public void delete(TEntity entityToDelete) {
         entities.remove(entityToDelete);
     }
+
+	
+
 }

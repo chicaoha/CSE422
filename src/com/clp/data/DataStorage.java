@@ -1,5 +1,13 @@
 package com.clp.data;
 
-public class DataStorage {
+import com.clp.entity.User;
+import com.clp.repository.Repository;
+
+public abstract class DataStorage {
+	protected Repository<User> users;
+
+	public Repository<User> getUsers() {
+		return users;
+	}
 
 }

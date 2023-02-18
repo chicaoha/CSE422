@@ -1,7 +1,7 @@
 package com.clp.entity;
 
 import java.util.Date;
-
+import com.clp.services.TextService;
 public class User extends BaseEntity{
 	private String lastName;
 	private String firstName;
