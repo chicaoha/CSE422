@@ -1,42 +1,22 @@
 package com.clp.repository;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-import com.clp.entity.User;
-import java.util.function.Predicate;
-public class Repository<TEntity> implements IRepository<TEntity> {
-    private List<TEntity> entities;
+public interface Repository<TEntity> {
+	List<TEntity> get(Predicate<TEntity> filter);
 
-    public Repository() {
-        entities = new ArrayList<>();
-    }
 
-    @Override
-    public List<TEntity> get(Predicate<TEntity> filter) {
-        List<TEntity> result = new ArrayList<>(entities);
-        if (filter != null) {
-            result.removeIf(filter.negate());
-        }
-        return result;
-    }
+	TEntity find(Predicate<TEntity> predicate);
 
-    @Override
-    public TEntity find(Predicate<TEntity> predicate) {
-        return entities.stream().filter(predicate).findFirst().orElse(null);
-    }
+	void insert(TEntity entity);
 
-    @Override
-    public void insert(TEntity entity) {
-        entities.add(entity);
-    }
+	void delete(TEntity entityToDelete);
 
-    @Override
-    public void delete(TEntity entityToDelete) {
-        entities.remove(entityToDelete);
-    }
+	TEntity getFirst(Predicate<TEntity> predicate);
 
-	
+
+	TEntity getById(int id);
 
 }
+
