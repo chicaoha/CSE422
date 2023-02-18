@@ -1,6 +1,6 @@
 package com.clp.data;
 
-import com.clp.chat.User;
+import com.clp.entity.User;
 import com.clp.repository.Repository;
 
 public class DataStorage {

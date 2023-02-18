@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
-
-import com.clp.chat.BaseEntity;
+import com.clp.entity.BaseEntity;
 
 public abstract class InMemorryRepository<TEntity extends BaseEntity> implements Repository<TEntity> {
 	private List<TEntity> entities;
