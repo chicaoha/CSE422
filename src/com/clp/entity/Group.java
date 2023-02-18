@@ -1,10 +1,10 @@
-package com.clp.chat;
+package com.clp.entity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Group {
-	ArrayList<User> users = new ArrayList<>();
+	List<User> users = new ArrayList<>();
 
 	public List<User> getUsers() {
 		return users;

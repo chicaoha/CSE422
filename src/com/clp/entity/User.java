@@ -1,8 +1,8 @@
-package com.clp.chat;
+package com.clp.entity;
 
 import java.util.Date;
 
-public class User {
+public class User extends BaseEntity{
 	private String lastName;
 	private String firstName;
 	private String fullName;
@@ -28,6 +28,21 @@ public class User {
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public User(String userName, String password) {
+		this.userName = userName;
+		this.hashPassword = hash(password);
+	}
+
+	private String hash(String text) {
+		TextService textService = new TextService();
+		return textService.hashMD5(text);
+	}
+	
+	public boolean login(String password) {
+		String hashedInputPassword = hash(password);
+		return hashedInputPassword.equals(hashedInputPassword);
 	}
 
 	public String getLastName() {

@@ -1,4 +1,4 @@
-package com.clp.chat;
+package com.clp.entity;
 
 public enum File {
 	Video,

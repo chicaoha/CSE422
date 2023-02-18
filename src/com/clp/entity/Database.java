@@ -1,4 +1,4 @@
-package com.clp.chat;
+package com.clp.entity;
 
 public class Database {
 	private static Database instance;
