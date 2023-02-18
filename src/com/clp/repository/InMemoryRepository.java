@@ -6,10 +6,10 @@ import java.util.Optional;
 import java.util.function.Predicate;
 import com.clp.entity.BaseEntity;
 
-public abstract class InMemorryRepository<TEntity extends BaseEntity> implements Repository<TEntity> {
+public abstract class InMemoryRepository<TEntity extends BaseEntity> implements Repository<TEntity> {
 	private List<TEntity> entities;
 
-	public InMemorryRepository() {
+	public InMemoryRepository() {
 		entities = new ArrayList<>();
 	}
 
