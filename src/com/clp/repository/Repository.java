@@ -5,7 +5,10 @@ import java.util.function.Predicate;
 
 public interface Repository<TEntity> {
 	List<TEntity> get(Predicate<TEntity> filter);
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
 
 	TEntity find(Predicate<TEntity> predicate);
 
@@ -15,8 +18,13 @@ public interface Repository<TEntity> {
 
 	TEntity getFirst(Predicate<TEntity> predicate);
 
+<<<<<<< HEAD
 
 	TEntity getById(int id);
 
 }
 
+=======
+	TEntity getById(int id);
+}
+>>>>>>> main
