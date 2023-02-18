@@ -26,8 +26,13 @@ public class Repository<TEntity> implements IRepository<TEntity> {
     }
 
     @Override
-    public void insert(TEntity entity) {
+    public boolean insert(TEntity entity) {
+    	
+    	if( entity == null) {
+    		return false;
+    	}
         entities.add(entity);
+        return true;
     }
 
     @Override
