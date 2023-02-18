@@ -15,4 +15,7 @@ public interface Repository<TEntity> {
 	TEntity getFirst(Predicate<TEntity> predicate);
 
 	TEntity getById(int id);
+
 }
+
+
