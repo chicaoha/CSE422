@@ -8,13 +8,15 @@ public interface Repository<TEntity> {
 
 	TEntity find(Predicate<TEntity> predicate);
 
-	void insert(TEntity entity);
+	boolean insert(TEntity entity);
 
 	void delete(TEntity entityToDelete);
 
 	TEntity getFirst(Predicate<TEntity> predicate);
 
 	TEntity getById(int id);
+
+	void deleteAll();
 
 }
 

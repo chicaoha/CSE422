@@ -6,7 +6,7 @@ import java.util.Optional;
 import java.util.function.Predicate;
 import com.clp.entity.BaseEntity;
 
-public abstract class InMemoryRepository<TEntity extends BaseEntity> implements Repository<TEntity> {
+public class InMemoryRepository<TEntity extends BaseEntity> implements Repository<TEntity> {
 	private List<TEntity> entities;
 
 	public InMemoryRepository() {
@@ -28,18 +28,25 @@ public abstract class InMemoryRepository<TEntity extends BaseEntity> implements 
 	}
 
 	@Override
-	public void insert(TEntity entity) {
+	public boolean insert(TEntity entity) {
 
 		if (entity == null) {
-			return;
+			return false;
 		}
 		entities.add(entity);
+		return true;
 	}
 
 	@Override
 	public void delete(TEntity entityToDelete) {
 		entities.remove(entityToDelete);
 	}
+	
+	@Override
+	public void deleteAll() {
+		entities.clear();
+	}
+	
 
 	@Override
 	public TEntity getFirst(Predicate<TEntity> predicate) {
