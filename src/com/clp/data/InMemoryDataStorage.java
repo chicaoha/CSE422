@@ -7,7 +7,7 @@ public class InMemoryDataStorage extends DataStorage{
 	private static InMemoryDataStorage storage;
 	
 	private InMemoryDataStorage () {
-         InMemoryRepository<User> users = new InMemoryRepository<User>();
+       users = new InMemoryRepository<User>();
 	}
 	public static InMemoryDataStorage getInstance() {
 		if( storage == null) {
