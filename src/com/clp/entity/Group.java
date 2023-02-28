@@ -3,7 +3,7 @@ package com.clp.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Group {
+public abstract class Group extends BaseEntity{
 	List<User> users = new ArrayList<>();
 
 	public List<User> getUsers() {
