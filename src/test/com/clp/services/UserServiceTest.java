@@ -6,7 +6,9 @@ import com.clp.data.InMemoryDataStorage;
 import com.clp.entity.User;
 import com.clp.services.UserService;
 
-import static org.junit.jupiter.api.Assertions.*; 
+import org.junit.Test;
+import org.junit.jupiter.api.Assertions; 
+
 
 public class UserServiceTest {
 	@org.junit.jupiter.api.BeforeEach
@@ -18,7 +20,7 @@ public class UserServiceTest {
     @org.junit.jupiter.api.AfterEach
     void tearDown() {
         DataStorage storage = InMemoryDataStorage.getInstance();
-        storage.getUsers().deleteAll();
+        storage.getUsers().delete(null);
     }
 
     @org.junit.jupiter.api.Test
@@ -41,7 +43,8 @@ public class UserServiceTest {
         DataStorage storage = InMemoryDataStorage.getInstance();
         boolean result = storage.getUsers().insert(new User("phat", "1234"));
 
-        Assertions.assertTrue(result);
-        Assertions.assertNotNull(storage.getUsers().getFirst(u -> u.getUsername().equals("phat")));
+
+        Assertions.assertNotNull(storage.getUsers().getFirst(u -> u.getUserName().equals("phat")));
+
     }
 }

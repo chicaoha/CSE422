@@ -8,7 +8,7 @@ public interface Repository<TEntity> {
 
 	TEntity find(Predicate<TEntity> predicate);
 
-	void insert(TEntity entity);
+	boolean insert(TEntity entity);
 
 	void delete(TEntity entityToDelete);
 
@@ -17,5 +17,3 @@ public interface Repository<TEntity> {
 	TEntity getById(int id);
 
 }
-
-
