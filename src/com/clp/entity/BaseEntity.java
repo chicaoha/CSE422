@@ -1,7 +1,7 @@
 
 package com.clp.entity;
 
-public class BaseEntity {
+public abstract class BaseEntity {
 	private int id;
 
 	public int getId() {
@@ -11,4 +11,6 @@ public class BaseEntity {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	
 }

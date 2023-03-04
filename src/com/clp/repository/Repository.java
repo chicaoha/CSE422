@@ -18,6 +18,5 @@ public interface Repository<TEntity> {
 
 	void deleteAll();
 
+	List<TEntity> getAll();
 }
-
-
