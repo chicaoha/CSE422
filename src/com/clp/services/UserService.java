@@ -1,6 +1,7 @@
 package com.clp.services;
 
 import com.clp.data.DataStorage;
+import com.clp.entity.Group;
 import com.clp.entity.User;
 public class UserService {
 	private final DataStorage storage;
@@ -27,5 +28,12 @@ public class UserService {
 		User newUser = new User(username,password);
 		storage.getUsers().insert(newUser);
 		return true;
+	}
+	public Group createGroup(String groupType, int groupID, String groupName) {
+		Group group= new Group() {
+		};
+		generateCode();
+		return null;
+		
 	}
 }
