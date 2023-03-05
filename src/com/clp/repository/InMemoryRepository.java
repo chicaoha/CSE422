@@ -59,4 +59,9 @@ public class InMemoryRepository<TEntity extends BaseEntity> implements Repositor
 		return entity.get();
 	}
 
+	@Override
+	public List<TEntity> getAll(){
+		return entities;
+	}
+
 }

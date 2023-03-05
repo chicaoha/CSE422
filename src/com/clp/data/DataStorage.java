@@ -6,12 +6,15 @@ import com.clp.repository.Repository;
 
 public abstract class DataStorage {
 	protected Repository<User> users;
-	protected Repository<Group> groups;
-
+	
+	protected Repository<Group> group;
+	
 	public Repository<User> getUsers() {
 		return users;
 	}
-	public Repository<Group> getGroups() {
-		return groups;
+	public Repository<Group> getGroup(){
+		return group;
 	}
+	
+
 }

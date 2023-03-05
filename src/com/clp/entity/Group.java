@@ -4,16 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Group extends BaseEntity{
-	List<User> users = new ArrayList<>();
-	private String groupName;
-	private int groupId;
-	
-	public Group(List<User> users, String groupName, int groupId) {
-		super();
-		this.users = users;
-		this.groupName = groupName;
-		this.groupId = groupId;
-	}
+
+	private List<User> users = new ArrayList<>();
+
 	public List<User> getUsers() {
 		return users;
 	}
@@ -28,7 +21,7 @@ public abstract class Group extends BaseEntity{
 		return flag;
 	}
 
-	public void addUser(User user) {
+	protected void addUser(User user) {
 		users.add(user);
 	}
 

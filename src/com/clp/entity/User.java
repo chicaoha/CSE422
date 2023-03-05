@@ -2,32 +2,28 @@ package com.clp.entity;
 
 import java.util.Date;
 import com.clp.services.TextService;
-public class User extends BaseEntity{
+
+public class User extends BaseEntity {
 	private String lastName;
 	private String firstName;
-	private String fullName;
 	private String userName;
 	private String hashPassword;
 	private String gender;
 	private Date dateOfBirth;
-	private int id;
 
-	public User(String lastName, String firstName, String fullName, String userName, String hashPassword, String gender,
-			Date dateOfBirth, int id) {
+	public User(String lastName, String firstName, String userName, String hashPassword, String gender,
+			Date dateOfBirth) {
 		super();
 		this.lastName = lastName;
 		this.firstName = firstName;
-		this.fullName = fullName;
 		this.userName = userName;
 		this.hashPassword = hashPassword;
 		this.gender = gender;
 		this.dateOfBirth = dateOfBirth;
-		this.id = id;
 	}
 
 	public User() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public User(String userName, String password) {
@@ -39,7 +35,7 @@ public class User extends BaseEntity{
 		TextService textService = new TextService();
 		return textService.hashMD5(text);
 	}
-	
+
 	public boolean login(String password) {
 		String hashedInputPassword = hash(password);
 		return hashedInputPassword.equals(hashedInputPassword);
@@ -59,14 +55,6 @@ public class User extends BaseEntity{
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
-	}
-
-	public String getFullName() {
-		return fullName;
-	}
-
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
 	}
 
 	public String getUserName() {
@@ -100,13 +88,4 @@ public class User extends BaseEntity{
 	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
-
-	public int getId() {
-		return id;
-	}
-
-//	public void setId(int id) {
-//		this.id = id;
-//	}
-
 }
