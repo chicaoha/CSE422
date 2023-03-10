@@ -6,7 +6,7 @@ import java.util.List;
 public abstract class Group extends BaseEntity{
 
 	private List<User> users = new ArrayList<>();
-
+	
 	public List<User> getUsers() {
 		return users;
 	}
