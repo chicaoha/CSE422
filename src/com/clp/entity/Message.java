@@ -1,17 +1,38 @@
 package com.clp.entity;
 
+import java.util.List;
+
 public class Message extends BaseEntity{
 	private User user;
 	private String userName;
 	private String content;
 	private boolean status;
 	private String receiver;
-	public Message(String userName, String content, String receiver) {
+	private List<File> attachment;
+	public Message(String userName, String content, String receiver,List<File> attachment) {
 		super();
 		this.userName = userName;
 		this.content = content;
 		this.receiver = receiver;
+		this.attachment = attachment;
 	}
+	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public List<File> getAttachment() {
+		return attachment;
+	}
+
+	public void setAttachment(List<File> attachment) {
+		this.attachment = attachment;
+	}
+
 	public User getUser() {
 		return user;
 	}

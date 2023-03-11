@@ -1,7 +1,14 @@
 package com.clp.entity;
 
-public enum File {
-	Video,
-	Image,
-	Text
+public class File extends BaseEntity {
+	String fileName;
+	String Id;
+	String path;
+
+	public File(String fileName, String id, String path) {
+		super();
+		this.fileName = fileName;
+		Id = id;
+		this.path = path;
+	}
 }
