@@ -36,7 +36,7 @@ public class InMemoryRepository<TEntity extends BaseEntity> implements Repositor
 		entities.add(entity);
 		return true;
 	}
-
+	
 	@Override
 	public void delete(TEntity entityToDelete) {
 		entities.remove(entityToDelete);

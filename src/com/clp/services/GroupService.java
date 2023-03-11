@@ -1,6 +1,6 @@
 package com.clp.services;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import com.clp.data.DataStorage;
@@ -41,14 +41,14 @@ public class GroupService {
 		return group;
 	}
 
-	public boolean RemoveUserFromGroup(int userId) {
-		boolean flag = false;
-		User foundUser = getUserById(userId);
-		if (foundUser != null) {
-			users.remove(foundUser);
-			flag = true;
-		}
-		return flag;
-		
-	}
+	
+//	public boolean RemoveUserFromGroup(int userId) {
+//		boolean flag = false;
+//		User foundUser = getUserById(userId);
+//		if (foundUser != null) {
+//			users.remove(foundUser);
+//			flag = true;
+//		}
+//		return flag;
+//	}
 }
