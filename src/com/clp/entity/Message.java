@@ -1,56 +1,46 @@
 package com.clp.entity;
 
+import java.util.Date;
 import java.util.List;
 
 public class Message extends BaseEntity{
-	private User user;
-	private String userName;
+	private String sender;
 	private String content;
-	private boolean status;
+//	private boolean status;
 	private String receiver;
-	private List<File> attachment;
-	public Message(String userName, String content, String receiver,List<File> attachment) {
+	private List<FileAttach> attachment;
+	public Message(String userName, String content, String receiver,List<FileAttach> attachment) {
 		super();
-		this.userName = userName;
+		this.sender = userName;
 		this.content = content;
 		this.receiver = receiver;
 		this.attachment = attachment;
 	}
 	
 	public String getUserName() {
-		return userName;
+		return sender;
 	}
 
 	public void setUserName(String userName) {
-		this.userName = userName;
+		this.sender = userName;
 	}
 
-	public List<File> getAttachment() {
+	public List<FileAttach> getAttachment() {
 		return attachment;
 	}
 
-	public void setAttachment(List<File> attachment) {
+	public void setAttachment(List<FileAttach> attachment) {
 		this.attachment = attachment;
 	}
 
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
+
 	public String getContent() {
 		return content;
 	}
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public boolean isStatus() {
-		return status;
-	}
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
+
 	public String getReceiver() {
 		return receiver;
 	}

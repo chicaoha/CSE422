@@ -42,13 +42,13 @@ public abstract class Group extends BaseEntity{
 //		}
 //		return user;
 //	}
-	public Message addMessage(Message message) {
-		Group group= null;
-		for ( int i=0; i< listMessages.size(); i++) {
-			listMessages.add(message);
-		}
-		return  (Message) listMessages;
-	}
+//	public Message addMessage(Message message) {
+//		Group group= null;
+//		for ( int i=0; i< listMessages.size(); i++) {
+//			listMessages.add(message);
+//		}
+//		return  (Message) listMessages;
+//	}
 	
 
 }

@@ -8,13 +8,18 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.UUID;
 
 import com.clp.data.DataStorage;
+import com.clp.entity.FileAttach;
 import com.clp.entity.Group;
 import com.clp.entity.Message;
 import com.clp.entity.User;
+import com.clp.repository.Repository;
 
 public class MessageService {
 	private final DataStorage storage;
@@ -55,23 +60,29 @@ public class MessageService {
 //			User tempReceiver = userService.getUser(receiverUser.getUserName());
 //			// create message object and add to receiver's message list
 //			message = new Message(sender.getUserName(), text, receiverUser.getUserName(), null);
-//		} else if (receiver instanceof Group) {
-//			Group receiverGroup = (Group) receiver;
-//
-//			if (!receiverGroup.getUsers().contains(sender)) {
-//				throw new IllegalArgumentException("Sender is not a member of the group");
-//			}
-//
-//			message = new Message(receiverName, text, receiverName, null);
-//		}
+//		} 
 //		return message;
 //	}
 	public void sendFile(File fileName, InputStream stream, String UserNane, String receiverName) throws IOException {
 		saveFile(stream, fileName);
+		FileAttach fileAtt = createFile(fileName);
 	}
-	public File createFile (File file) {
-		File file = new File();
+	public void sendMessageByFile( FileAttach fileAtt, String sender, String receiver) {
+		
 	}
+	public FileAttach createFile (File file) {
+		String id= UUID.randomUUID().toString();
+		String name = "Phat" + id;
+		String path = "Dir" + id;
+		FileAttach fileAttach = new FileAttach(name, id, path);
+		return fileAttach;
+	}
+	public Boolean addMessage (String sender, String content, String receiver, List<FileAttach> attachment) {
+		Message message = new Message(sender, content, receiver, attachment);
+		storage.getMessage().insert(message);
+		return true;
+	}
+	
 	private static void saveFile(InputStream inputStream, File file) throws IOException {
 		try (FileOutputStream outputStream = new FileOutputStream(file, false)) {
 			int read;
