@@ -2,13 +2,15 @@ package com.clp.entity;
 
 public class Message extends BaseEntity{
 	private User user;
+	private String userName;
 	private String content;
 	private boolean status;
-	public Message(User user, String content, boolean status) {
+	private String receiver;
+	public Message(String userName, String content, String receiver) {
 		super();
-		this.user = user;
+		this.userName = userName;
 		this.content = content;
-		this.status = status;
+		this.receiver = receiver;
 	}
 	public User getUser() {
 		return user;
@@ -27,6 +29,12 @@ public class Message extends BaseEntity{
 	}
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+	public String getReceiver() {
+		return receiver;
+	}
+	public void setReceiver(String receiver) {
+		this.receiver = receiver;
 	}
 	
 	

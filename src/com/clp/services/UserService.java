@@ -8,12 +8,14 @@ import com.clp.repository.Repository;
 
 public class UserService {
 	private final DataStorage storage;
-
+	public User curUser;
 	public UserService(DataStorage storage) {
 		super();
 		this.storage = storage;
 	}
-
+	public User getUser(String userName) {
+		return storage.getUsers().find(user -> user.getUserName().equals(userName));
+	}
 	public boolean login(String username, String password) {
 		Repository<User> userRepository = storage.getUsers();
 		User attemptedUser = userRepository.getFirst(user -> user.getUserName().equals(username));
