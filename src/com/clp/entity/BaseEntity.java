@@ -1,4 +1,4 @@
-
+ 
 package com.clp.entity;
 
 public abstract class BaseEntity {

@@ -45,6 +45,7 @@ public class PublicGroup extends Group {
 		int id = user.getId();
 		deleteUser(id);
 	}
+	
 
 //	@Override
 //	public List<User> getUsers() {
