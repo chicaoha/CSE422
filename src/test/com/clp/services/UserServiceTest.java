@@ -6,9 +6,10 @@ import com.clp.data.InMemoryDataStorage;
 import com.clp.entity.User;
 import com.clp.services.UserService;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions; 
-
 
 public class UserServiceTest {
 	@org.junit.jupiter.api.BeforeEach
@@ -44,7 +45,7 @@ public class UserServiceTest {
         boolean result = storage.getUsers().insert(new User("phat", "1234"));
 
 
+        Assertions.assertTrue(result);
         Assertions.assertNotNull(storage.getUsers().getFirst(u -> u.getUserName().equals("phat")));
-
     }
 }

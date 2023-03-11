@@ -43,11 +43,11 @@ public class InMemoryRepository<TEntity extends BaseEntity> implements Repositor
 	public void delete(TEntity entityToDelete) {
 		entities.remove(entityToDelete);
 	}
-	
+
+	@Override
 	public void deleteAll() {
 		entities.clear();
 	}
-	
 
 	@Override
 	public TEntity getFirst(Predicate<TEntity> predicate) {
@@ -61,4 +61,9 @@ public class InMemoryRepository<TEntity extends BaseEntity> implements Repositor
 		return entity.get();
 	}
 
+	@Override
+	public List<TEntity> getAll(){
+		return entities;
+	}
 }
+
