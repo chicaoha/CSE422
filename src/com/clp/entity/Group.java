@@ -3,9 +3,10 @@ package com.clp.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Group extends BaseEntity{
+public abstract class Group extends BaseEntity {
 	private List<User> users = new ArrayList<>();
 	private List<String> listMessages = new ArrayList<>();
+
 	public List<User> getUsers() {
 		return users;
 	}
@@ -49,6 +50,5 @@ public abstract class Group extends BaseEntity{
 //		}
 //		return  (Message) listMessages;
 //	}
-	
 
 }

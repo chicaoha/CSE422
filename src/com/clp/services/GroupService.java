@@ -1,5 +1,6 @@
 package com.clp.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.clp.data.DataStorage;
@@ -17,26 +18,32 @@ public class GroupService {
 	private List<PublicGroup> listPublicGroup;
 	private List<PrivateGroup> listPrivateGroup;
 
-	public GroupService(DataStorage storage, boolean isPublic, String groupName) {
+	public GroupService(DataStorage storage) {
 		super();
 		this.storage = storage;
-		this.isPublic = isPublic;
-		this.groupName = groupName;
+//		this.isPublic = isPublic;
+//		this.groupName = groupName;
+		listPrivateGroup = new ArrayList<PrivateGroup>();
+		listPublicGroup = new ArrayList<>();
 	}
 
 	public Group createGroup(User user, boolean isPublic) {
 		Repository<Group> groupRepository = storage.getGroup();
-		Group group;
+		Group group = new Group() {};
 		if (isPublic) {
 			PublicGroup publicGroup = new PublicGroup();
 			String code = publicGroup.getGroupCode();
-			listPublicGroup.add(publicGroup);
 			group = publicGroup;
+			listPublicGroup.add(publicGroup);
 		} else {
+			System.out.println("test");
 			PrivateGroup privateGroup = new PrivateGroup(user);
 			group = privateGroup;
+			System.out.println(group);
 		}
-		storage.getGroup().insert(group);
+		System.out.println(groupRepository);
+		groupRepository.insert(group);
+		
 		return group;
 	}
 
