@@ -12,6 +12,7 @@ public abstract class DataStorage {
 	
 	protected Repository<Message> message;
 	
+
 	public Repository<User> getUsers() {
 		return users;
 	}
