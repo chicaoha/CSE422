@@ -23,4 +23,12 @@ public class PrivateGroup extends Group {
 		return false;
 	}
 
+	public List<User> getAdmins() {
+		return admins;
+	}
+
+	public void setAdmins(List<User> admins) {
+		this.admins = admins;
+	}
+
 }
