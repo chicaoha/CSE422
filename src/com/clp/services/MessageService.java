@@ -4,33 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.clp.data.DataStorage;
-import com.clp.entity.Group;
-import com.clp.entity.Message;
-import com.clp.entity.User;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
-import java.util.UUID;
-import java.util.function.Predicate;
-
-import com.clp.data.DataStorage;
 import com.clp.entity.FileAttach;
 import com.clp.entity.Group;
 import com.clp.entity.Message;
 import com.clp.entity.User;
-import com.clp.repository.Repository;
-
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.UUID;
 public class MessageService {
 	private final DataStorage storage;
 	UserService userService;
@@ -38,18 +20,13 @@ public class MessageService {
 	List<Message> listMessages = new ArrayList<>();
 	public static final int DEFAULT_BUFFER_SIZE = 8192;
 
-
-
-	public MessageService(DataStorage storage, UserService userService, GroupService groupService,
-			List<Message> listMessages) {
+	public MessageService(DataStorage storage) {
 		super();
 		this.storage = storage;
-		this.userService = userService;
-		this.groupService = groupService;
-		this.listMessages = listMessages;
+		this.userService = userService = new UserService(storage);
+		this.groupService = groupService = new GroupService(storage);
+
 	}
-
-
 
 	public void sendFile(File fileName, InputStream stream, String UserNane, String receiverName) throws IOException {
 		saveFile(stream, fileName);
@@ -64,7 +41,7 @@ public class MessageService {
 		return fileAttach;
 	}
 
-	private static void saveFile(InputStream inputStream, File file) throws IOException {
+	public void saveFile(InputStream inputStream, File file) throws IOException {
 		try (FileOutputStream outputStream = new FileOutputStream(file, false)) {
 			int read;
 			byte[] bytes = new byte[DEFAULT_BUFFER_SIZE];
@@ -74,9 +51,12 @@ public class MessageService {
 		}
 	}
 
-	public Boolean sendMessage(String sender, String content, String receiver, List<FileAttach> attachment) {
+	public Boolean sendMessage(User sender, String content, User receiver, List<FileAttach> attachment) {
 		Message message = new Message(sender, content, receiver, attachment);
-		listMessages.add((Message) message.sortMessageByTime);
+		System.out.println(message.sortMessageByTime);
+//		Message sortMessage = (Message) message.sortMessageByTime;
+		listMessages.add(message);
+		System.out.println(listMessages.get(0));
 		storage.getMessage().insert(message);
 		return true;
 	}
@@ -87,9 +67,9 @@ public class MessageService {
 
 	public List<Message> getAllMessage() {
 		this.listMessages = storage.getMessage().getAll();
+		System.out.println(listMessages);
 		return listMessages;
 	}
-
 
 //	public List<FileAttach> getAllFiles(Group group){
 //		if(checkMember(user, group)) {
@@ -97,10 +77,11 @@ public class MessageService {
 //		FileAttach file = messagesContainFiles.get(message -> message.getAttachment() != null, message )
 //		}
 //	}
-	public List<Message> GetTopLatestMessages(int numOfLastesMessages, int notIncludeMessages) {
+	public List<Message> getTopLatestMessages(int numOfLastesMessages, int notIncludeMessages) {
 		List<Message> latestMessages = new ArrayList<>();
 		if (numOfLastesMessages >= notIncludeMessages && listMessages != null) {
 			for (int i = notIncludeMessages; i < numOfLastesMessages; i++) {
+				System.out.println(listMessages);
 				latestMessages.add(listMessages.get(i));
 			}
 		}
@@ -139,8 +120,8 @@ public class MessageService {
 		}
 		return groupsOfUser;
 	}
-	
-	public List<List<Message>> GetConversations(User user){
+
+	public List<List<Message>> GetConversations(User user) {
 		List<List<Message>> conversations = new ArrayList<>();
 		List<Group> groups = getGroupsOfUser(user);
 		for (Group group : groups) {
@@ -149,19 +130,12 @@ public class MessageService {
 		}
 		return conversations;
 	}
+//	public boolean sendMessToGroup(User sender, User receiver, String content, List<FileAttach> attachment) {
+//		if (userService.findUserById(receiver)) {
+//			sendMessage(sender, content, receiver, attachment);
+//			return true;
+//		}
+//		return false;
+//	}
 	
-	public HashMap<Integer, List<Message>>  getConversations (User user){
-		HashMap<Integer, List<Message>> conversations = new HashMap<>();
-		List<Group> groups = getGroupsOfUser(user);
-		for (Group group : groups) {
-			List<Message> messages = group.getListMessages();
-			int groupId = group.getId();
-			conversations.put(groupId, messages);
-		}
-		return conversations;
-	}
-	
-//	public List<Message> getConversations
-
-
 }

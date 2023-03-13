@@ -24,6 +24,12 @@ public class GroupService {
 		listPrivateGroup = new ArrayList<PrivateGroup>();
 		listPublicGroup = new ArrayList<>();
 	}
+	
+	public Group findGroupById(Group anyGroup) {
+		Repository<Group> groupRepository = storage.getGroup();
+		Group foundGroup = groupRepository.getFirst(group -> group.getId() == group.getId());
+		return foundGroup;
+	}
 
 	public Group createGroup(User user, boolean isPublic) {
 		Repository<Group> groupRepository = storage.getGroup();

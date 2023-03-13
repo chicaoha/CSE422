@@ -5,9 +5,13 @@ import java.util.List;
 
 public abstract class Group extends BaseEntity {
 
-	private List<User> users = new ArrayList<>();
-	private List<Message> listMessages = new ArrayList<>();
-
+	private List<User> users ;
+	private List<Message> listMessages ;
+	
+	public Group() {
+		users = new ArrayList<>();
+		listMessages = new ArrayList<>();
+	}
 	public List<User> getUsers() {
 		return users;
 	}	
@@ -25,7 +29,7 @@ public abstract class Group extends BaseEntity {
 		return flag;
 	}
 
-	protected void addUser(User user) {
+	public void addUser(User user) {
 		users.add(user);
 	}
 
@@ -48,22 +52,11 @@ public abstract class Group extends BaseEntity {
 //		return user;
 //	}
 
-
-//	public Group addMessage(String message) {
-//		Group group = null;
-//		for (int i = 0; i < listMessages.size(); i++) {
-//			listMessages.add(message);
-//		}
-//		return (Group) listMessages;
-//	}
-
-
-//	public Message addMessage(Message message) {
-//		Group group= null;
-//		for ( int i=0; i< listMessages.size(); i++) {
-//			listMessages.add(message);
-//		}
-//		return  (Message) listMessages;
-//	}
+	public Message addMessage(Message message) {
+		for ( int i=0; i< listMessages.size(); i++) {
+			listMessages.add(message);
+		}
+		return  (Message) listMessages;
+	}
 
 }
