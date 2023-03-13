@@ -1,6 +1,5 @@
 package test.com.clp.services;
 
-
 import com.clp.data.DataStorage;
 import com.clp.data.InMemoryDataStorage;
 import com.clp.entity.User;

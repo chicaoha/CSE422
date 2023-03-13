@@ -45,6 +45,7 @@ public class GroupService {
 		return group;
 	}
 
+
 	public boolean isAdmin(Group group, User user) {
 		for (PrivateGroup privateGroup : listPrivateGroup) {
 			if (privateGroup.getId() == group.getId()) {

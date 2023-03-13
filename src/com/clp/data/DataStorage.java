@@ -15,7 +15,6 @@ public abstract class DataStorage {
 
 	protected Repository<Alias> alias;
 
-
 	public Repository<User> getUsers() {
 		return users;
 	}
@@ -27,7 +26,7 @@ public abstract class DataStorage {
 	public Repository<Message> getMessage() {
 		return message;
 	}
-	
+
 	public Repository<Alias> getAlias() {
 		return alias;
 	}

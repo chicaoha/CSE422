@@ -1,5 +1,13 @@
 package com.clp.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.clp.data.DataStorage;
+import com.clp.entity.Group;
+import com.clp.entity.Message;
+import com.clp.entity.User;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -30,13 +38,17 @@ public class MessageService {
 	List<Message> listMessages = new ArrayList<>();
 	public static final int DEFAULT_BUFFER_SIZE = 8192;
 
-	public MessageService(DataStorage storage) {
+
+
+	public MessageService(DataStorage storage, UserService userService, GroupService groupService,
+			List<Message> listMessages) {
 		super();
 		this.storage = storage;
-		this.userService = new UserService(storage);
-		this.groupService = new GroupService(storage);
+		this.userService = userService;
+		this.groupService = groupService;
 		this.listMessages = listMessages;
 	}
+
 
 
 	public void sendFile(File fileName, InputStream stream, String UserNane, String receiverName) throws IOException {
@@ -150,5 +162,6 @@ public class MessageService {
 	}
 	
 //	public List<Message> getConversations
+
 
 }

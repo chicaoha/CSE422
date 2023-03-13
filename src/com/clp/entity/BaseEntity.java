@@ -1,4 +1,4 @@
- 
+
 package com.clp.entity;
 
 public abstract class BaseEntity {
@@ -10,13 +10,11 @@ public abstract class BaseEntity {
 
 	public void setId(int id) {
 		this.id = id;
-	
-	}
 
+	}
 	public void setIdIfNotExist(int id) {
 		if (id != 0) {
 			setId(id);
 		}
 	}
-
 }
