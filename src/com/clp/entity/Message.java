@@ -8,7 +8,6 @@ import java.util.List;
 public class Message extends BaseEntity {
 	private String sender;
 	private String content;
-//	private boolean status;
 	private String receiver;
 	private List<FileAttach> attachment;
 	private LocalDateTime sentAt;

@@ -5,10 +5,14 @@ import java.util.List;
 
 public abstract class Group extends BaseEntity {
 	private List<User> users = new ArrayList<>();
-	private List<String> listMessages = new ArrayList<>();
+	private List<Message> listMessages = new ArrayList<>();
 
 	public List<User> getUsers() {
 		return users;
+	}	
+
+	public List<Message> getListMessages() {
+		return listMessages;
 	}
 
 	public boolean deleteUser(int id) {

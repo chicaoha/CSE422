@@ -21,15 +21,14 @@ public class GroupService {
 	public GroupService(DataStorage storage) {
 		super();
 		this.storage = storage;
-//		this.isPublic = isPublic;
-//		this.groupName = groupName;
 		listPrivateGroup = new ArrayList<PrivateGroup>();
 		listPublicGroup = new ArrayList<>();
 	}
 
 	public Group createGroup(User user, boolean isPublic) {
 		Repository<Group> groupRepository = storage.getGroup();
-		Group group = new Group() {};
+		Group group = new Group() {
+		};
 		if (isPublic) {
 			PublicGroup publicGroup = new PublicGroup();
 			String code = publicGroup.getGroupCode();
@@ -43,18 +42,36 @@ public class GroupService {
 		}
 		System.out.println(groupRepository);
 		groupRepository.insert(group);
-		
 		return group;
 	}
 
-	
-//	public boolean RemoveUserFromGroup(int userId) {
-//		boolean flag = false;
-//		User foundUser = getUserById(userId);
-//		if (foundUser != null) {
-//			users.remove(foundUser);
-//			flag = true;
-//		}
-//		return flag;
-//	}
+	public boolean isAdmin(Group group, User user) {
+		for (PrivateGroup privateGroup : listPrivateGroup) {
+			if (privateGroup.getId() == group.getId()) {
+				List<User> admins = privateGroup.getAdmins();
+				for (User admin : admins) {
+					if (admin.getId() == user.getId()) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
+
+	public boolean RemoveUserFromGroup(int userId, int groupId) {
+		Repository<Group> groupRepository = storage.getGroup();
+		Group foundGroup = groupRepository.getFirst(group -> group.getId() == groupId);
+		if (foundGroup != null) {
+			Repository<User> userRepository = storage.getUsers();
+			User existing = userRepository.getFirst(user -> user.getId() == (userId));
+			if (existing != null) {
+				if (!isAdmin(foundGroup, existing)) {
+					foundGroup.deleteUser(userId);
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 }

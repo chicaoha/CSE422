@@ -10,9 +10,11 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
+import java.util.function.Predicate;
 
 import com.clp.data.DataStorage;
 import com.clp.entity.FileAttach;
@@ -36,10 +38,13 @@ public class MessageService {
 		this.listMessages = listMessages;
 	}
 
+
 	public void sendFile(File fileName, InputStream stream, String UserNane, String receiverName) throws IOException {
 		saveFile(stream, fileName);
 		FileAttach fileAtt = createFile(fileName);
 	}
+
+
 
 	public FileAttach createFile(File file) {
 		String id = UUID.randomUUID().toString();
@@ -75,6 +80,13 @@ public class MessageService {
 		return listMessages;
 	}
 
+
+//	public List<FileAttach> getAllFiles(Group group){
+//		if(checkMember(user, group)) {
+//		Repository<Message> messagesContainFiles = storage.getMessage();
+//		FileAttach file = messagesContainFiles.get(message -> message.getAttachment() != null, message )
+//		}
+//	}
 	public List<Message> GetTopLatestMessages(int numOfLastesMessages, int notIncludeMessages) {
 		List<Message> latestMessages = new ArrayList<>();
 		if (numOfLastesMessages >= notIncludeMessages && listMessages != null) {
@@ -95,4 +107,50 @@ public class MessageService {
 		}
 		return messagesFindByKeyword;
 	}
+
+	public boolean checkMember(User user, Group group) {
+		List<User> users = group.getUsers();
+		for (int i = 0; i < users.size(); i++) {
+			if (users.get(i).getId() == user.getId()) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public List<Group> getGroupsOfUser(User user) {
+		List<Group> groupsOfUser = new ArrayList<>();
+		List<Group> groups = storage.getGroup().getAll();
+		for (int i = 0; i < groups.size(); i++) {
+			Group group = groups.get(i);
+			if (checkMember(user, group)) {
+				groupsOfUser.add(group);
+			}
+		}
+		return groupsOfUser;
+	}
+	
+	public List<List<Message>> GetConversations(User user){
+		List<List<Message>> conversations = new ArrayList<>();
+		List<Group> groups = getGroupsOfUser(user);
+		for (Group group : groups) {
+			List<Message> messages = group.getListMessages();
+			conversations.add(messages);
+		}
+		return conversations;
+	}
+	
+	public HashMap<Integer, List<Message>>  getConversations (User user){
+		HashMap<Integer, List<Message>> conversations = new HashMap<>();
+		List<Group> groups = getGroupsOfUser(user);
+		for (Group group : groups) {
+			List<Message> messages = group.getListMessages();
+			int groupId = group.getId();
+			conversations.put(groupId, messages);
+		}
+		return conversations;
+	}
+	
+//	public List<Message> getConversations
+
 }
