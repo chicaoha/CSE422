@@ -21,7 +21,7 @@ public class UserServiceTest {
     @org.junit.jupiter.api.AfterEach
     void tearDown() {
         DataStorage storage = InMemoryDataStorage.getInstance();
-        storage.getUsers().deleteAll();
+        storage.getUsers().delete(null);
     }
 
     @org.junit.jupiter.api.Test

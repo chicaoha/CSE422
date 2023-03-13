@@ -6,7 +6,9 @@ import java.util.Optional;
 import java.util.function.Predicate;
 import com.clp.entity.BaseEntity;
 
+
 public class InMemoryRepository<TEntity extends BaseEntity> implements Repository<TEntity> {
+
 	private List<TEntity> entities;
 
 	public InMemoryRepository() {
@@ -63,5 +65,5 @@ public class InMemoryRepository<TEntity extends BaseEntity> implements Repositor
 	public List<TEntity> getAll(){
 		return entities;
 	}
-
 }
+
