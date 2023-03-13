@@ -13,15 +13,15 @@ public class InMemoryDataStorage extends DataStorage {
 		group = new InMemoryRepository<Group>();
 		message = new InMemoryRepository<Message>();
 	}
+
 	private void InMemoryDataStorageMessage() {
 		message = new InMemoryRepository<Message>();
-
 	}
+
 	public static InMemoryDataStorage getInstance() {
 		if (storage == null) {
 			storage = new InMemoryDataStorage();
 		}
 		return storage;
 	}
-
 }

@@ -13,6 +13,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.UUID;
+
 public class MessageService {
 	private final DataStorage storage;
 	UserService userService;
@@ -130,12 +131,4 @@ public class MessageService {
 		}
 		return conversations;
 	}
-//	public boolean sendMessToGroup(User sender, User receiver, String content, List<FileAttach> attachment) {
-//		if (userService.findUserById(receiver)) {
-//			sendMessage(sender, content, receiver, attachment);
-//			return true;
-//		}
-//		return false;
-//	}
-	
 }

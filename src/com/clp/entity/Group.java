@@ -5,20 +5,22 @@ import java.util.List;
 
 public abstract class Group extends BaseEntity {
 
-	private List<User> users ;
-	private List<Message> listMessages ;
-	
+	private List<User> users;
+	private List<Message> listMessages;
+
 	public Group() {
 		users = new ArrayList<>();
 		listMessages = new ArrayList<>();
 	}
+
 	public List<User> getUsers() {
 		return users;
-	}	
+	}
 
 	public List<Message> getListMessages() {
 		return listMessages;
 	}
+
 	public boolean deleteUser(int id) {
 		boolean flag = false;
 		User foundUser = getUserById(id);
@@ -42,21 +44,11 @@ public abstract class Group extends BaseEntity {
 		}
 		return user;
 	}
-//	public Group getGroupById(int id) {
-//		Group group = null;
-//		for (int i = 0; i < users.size(); i++) {
-//			if (id == users.get(i).getId()) {
-//				user = users.get(i);
-//			}
-//		}
-//		return user;
-//	}
 
 	public Message addMessage(Message message) {
-		for ( int i=0; i< listMessages.size(); i++) {
+		for (int i = 0; i < listMessages.size(); i++) {
 			listMessages.add(message);
 		}
-		return  (Message) listMessages;
+		return (Message) listMessages;
 	}
-
 }

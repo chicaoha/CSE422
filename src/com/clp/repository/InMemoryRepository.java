@@ -6,7 +6,6 @@ import java.util.Optional;
 import java.util.function.Predicate;
 import com.clp.entity.BaseEntity;
 
-
 public class InMemoryRepository<TEntity extends BaseEntity> implements Repository<TEntity> {
 
 	private List<TEntity> entities;
@@ -38,7 +37,7 @@ public class InMemoryRepository<TEntity extends BaseEntity> implements Repositor
 		entities.add(entity);
 		return true;
 	}
-	
+
 	@Override
 	public void delete(TEntity entityToDelete) {
 		entities.remove(entityToDelete);
@@ -62,8 +61,7 @@ public class InMemoryRepository<TEntity extends BaseEntity> implements Repositor
 	}
 
 	@Override
-	public List<TEntity> getAll(){
+	public List<TEntity> getAll() {
 		return entities;
 	}
 }
-

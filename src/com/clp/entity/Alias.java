@@ -4,7 +4,7 @@ public class Alias {
 	private User assignor;
 	private User assignee;
 	private String alias;
-	
+
 	public Alias(User assignor, User assignee, String alias) {
 		super();
 		this.assignor = assignor;
@@ -35,6 +35,4 @@ public class Alias {
 	public void setAlias(String alias) {
 		this.alias = alias;
 	}
-	
-	
 }

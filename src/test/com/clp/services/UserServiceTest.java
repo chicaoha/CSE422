@@ -8,40 +8,40 @@ import com.clp.services.UserService;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.Test;
-import org.junit.jupiter.api.Assertions; 
+import org.junit.jupiter.api.Assertions;
 
 public class UserServiceTest {
 	@org.junit.jupiter.api.BeforeEach
-    void setUp() {
-        DataStorage storage = InMemoryDataStorage.getInstance();
-        storage.getUsers().insert(new User("phat", "1234"));
-    }
+	void setUp() {
+		DataStorage storage = InMemoryDataStorage.getInstance();
+		storage.getUsers().insert(new User("phat", "1234"));
+	}
 
-    @org.junit.jupiter.api.AfterEach
-    void tearDown() {
-        DataStorage storage = InMemoryDataStorage.getInstance();
-        storage.getUsers().delete(null);
-    }
+	@org.junit.jupiter.api.AfterEach
+	void tearDown() {
+		DataStorage storage = InMemoryDataStorage.getInstance();
+		storage.getUsers().delete(null);
+	}
 
-    @org.junit.jupiter.api.Test
-    void login() {
-        DataStorage storage = InMemoryDataStorage.getInstance();
-        UserService service = new UserService(storage);
-        Assertions.assertFalse(service.login("", "143544"));
-    }
+	@org.junit.jupiter.api.Test
+	void login() {
+		DataStorage storage = InMemoryDataStorage.getInstance();
+		UserService service = new UserService(storage);
+		Assertions.assertFalse(service.login("", "143544"));
+	}
 
-    @org.junit.jupiter.api.Test
-    void loginSuccessfull() {
-        DataStorage storage = InMemoryDataStorage.getInstance();
-        UserService service = new UserService(storage);
-        Assertions.assertTrue(service.login("phat", "1234"));
-    }
-    
-    @org.junit.jupiter.api.Test
-    void addUser() {
-        DataStorage storage = InMemoryDataStorage.getInstance();
-        boolean result = storage.getUsers().insert(new User("phat", "1234"));
-        Assertions.assertTrue(result);
-        Assertions.assertNotNull(storage.getUsers().getFirst(u -> u.getUserName().equals("phat")));
-    }
+	@org.junit.jupiter.api.Test
+	void loginSuccessfull() {
+		DataStorage storage = InMemoryDataStorage.getInstance();
+		UserService service = new UserService(storage);
+		Assertions.assertTrue(service.login("phat", "1234"));
+	}
+
+	@org.junit.jupiter.api.Test
+	void addUser() {
+		DataStorage storage = InMemoryDataStorage.getInstance();
+		boolean result = storage.getUsers().insert(new User("phat", "1234"));
+		Assertions.assertTrue(result);
+		Assertions.assertNotNull(storage.getUsers().getFirst(u -> u.getUserName().equals("phat")));
+	}
 }

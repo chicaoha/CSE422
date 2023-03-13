@@ -14,7 +14,6 @@ public class Message extends BaseEntity {
 	private List<FileAttach> attachment;
 	private LocalDateTime sentAt;
 	
-
 	public Message(User userName, String content, User receiver, List<FileAttach> attachmentt) {
 		super();
 		this.sender = userName;
@@ -68,5 +67,4 @@ public class Message extends BaseEntity {
 	public void setReceiver(User receiver) {
 		this.receiver = receiver;
 	}
-
 }
