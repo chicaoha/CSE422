@@ -1,6 +1,6 @@
 package com.clp.entity;
 
-public enum File {
+public enum FileType {
 	Video,
 	Image,
 	Text

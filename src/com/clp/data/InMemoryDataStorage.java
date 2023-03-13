@@ -10,9 +10,8 @@ public class InMemoryDataStorage extends DataStorage {
 
 	private InMemoryDataStorage() {
 		users = new InMemoryRepository<User>();
-	}
-	private void InMemoryDataStorageGroup() {
 		group = new InMemoryRepository<Group>();
+		message = new InMemoryRepository<Message>();
 	}
 	private void InMemoryDataStorageMessage() {
 		message = new InMemoryRepository<Message>();

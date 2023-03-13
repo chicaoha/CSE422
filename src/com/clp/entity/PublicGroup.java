@@ -21,18 +21,13 @@ public class PublicGroup extends Group {
 		return groupCode;
 	}
 
-	public void setGroupCode(String groupCode) {
-		this.groupCode = groupCode;
-	}
-
-	public TextService getTextService() {
-		return textService;
-	}
-
 	public boolean joinByCode(User user, String code) {
-		int idUser= user.getId();
-		User foundId = getUserById(idUser); 
-		if (foundId.getId() == idUser) {
+		int idUser = user.getId();
+		User foundUser = getUserById(idUser);
+		System.out.println(foundUser);
+		System.out.println(idUser + " ");
+		if (foundUser == null) {
+			System.out.println(groupCode);
 			if (code.equals(groupCode)) {
 				addUser(user);
 				return true;
@@ -41,7 +36,7 @@ public class PublicGroup extends Group {
 		return false;
 	}
 
-	private void leaveGroup(User user) {
+	public void leaveGroup(User user) {
 		int id = user.getId();
 		deleteUser(id);
 	}
