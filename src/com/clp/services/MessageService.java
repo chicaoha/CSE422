@@ -44,8 +44,6 @@ public class MessageService {
 		FileAttach fileAtt = createFile(fileName);
 	}
 
-
-
 	public FileAttach createFile(File file) {
 		String id = UUID.randomUUID().toString();
 		String name = "Phat" + id;

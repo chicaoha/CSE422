@@ -37,7 +37,7 @@ public class UserServiceTest {
         UserService service = new UserService(storage);
         Assertions.assertTrue(service.login("phat", "1234"));
     }
-
+    
     @org.junit.jupiter.api.Test
     void addUser() {
         DataStorage storage = InMemoryDataStorage.getInstance();
