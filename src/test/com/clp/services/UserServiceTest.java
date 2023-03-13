@@ -27,7 +27,7 @@ public class UserServiceTest {
     void login() {
         DataStorage storage = InMemoryDataStorage.getInstance();
         UserService service = new UserService(storage);
-//        Assertions.assertFalse(service.login("phat", "143544"));
+        Assertions.assertFalse(service.login("", "143544"));
     }
 
     @org.junit.jupiter.api.Test
